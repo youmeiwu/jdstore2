@@ -20,7 +20,7 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <% if current_user && current_user.admin? %>
+            <% if current_user.admin? %>
               <li>
                 <%= link_to "Admin Panel", admin_products_path %>
               </li>
