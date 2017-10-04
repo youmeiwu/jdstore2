@@ -8,4 +8,23 @@ class CartItemsController < ApplicationController
     flash[:warning] = "成功将商品 #{@product.title} 从购物车删除！"
     redirect_to carts_path
   end
+
+  def edit
+    @cart_item = current_cart.cart_items.find(params[:id])
+  end
+
+  def update
+    @cart_item = current_cart.cart_items.find(params[:id])
+    if @cart_item.update(cart_item_params)
+      redirect_to carts_path
+    else
+      render :edit
+    end
+  end
+
+  private
+
+  def cart_item_params
+    params.require(:cart_item).permit(:quantity)
+  end
 end
