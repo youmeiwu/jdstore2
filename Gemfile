@@ -32,7 +32,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'bootstrap-sass'
 gem 'devise'
-gem 'rake', '~> 12.0.0'
+gem 'rake', '~> 12.1.0'
 gem 'simple_form'
 gem 'font-awesome-rails'
 gem 'carrierwave'
