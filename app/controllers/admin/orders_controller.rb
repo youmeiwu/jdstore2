@@ -15,24 +15,26 @@ class Admin::OrdersController < ApplicationController
   def ship
     @order = Order.find(params[:id])
     @order.ship!
-    redirec_to :back
+    OrderMailer.notify_ship(@order).deliver!
+    redirect_to :back
   end
 
   def shipped
     @order = Order.find(params[:id])
     @order.deliver!
-    redirec_to :back
+    redirect_to :back
   end
 
   def cancel
     @order = Order.find(params[:id])
     @order.cancel_order!
-    redirec_to :back
+    OrderMailer.notify_cancel(@order).deliver!
+    redirect_to :back
   end
 
   def return
     @order = Order.find(params[:id])
     @order.return_good!
-    redirec_to :back
+    redirect_to :back
   end
 end
